@@ -1,0 +1,33 @@
+
+MINI INSTRUCTIVO DE UNIX
+==ls/dir== Comando para listar lo que hay en un directorio
+==mkdir "nombre"== Crea un directorio con el nombre que queramos
+==cd "nombre"== Cambiar de directorio
+==pwd== Directorio actual
+==rm== Borrar un archivo
+==cd...== Directorio anterior
+==cd../../../== 3 directorios anteriores
+
+***¿Cómo se crea un archivo de texto desde una terminal ubuntu?***
+1) ==cd "nombre"== A]ccedemos al direcotrio desde donde queremos trabajar
+2) ==vi "lab1"== Entra al editor de textos y "lab1" es el nombre de nuesttro archivo txt
+3) ==i== Insertar texto
+4) ==x== Borrar texto
+5) ==esc== Sale del comando 
+6) ==R== Reemplazar
+7) ==:wq== Salir y guardar
+8) ==:w== Guardar
+9) ==:q!== Salir y no guardar nada
+10) ==:$== Ir a la última línea del código
+11) ==:100== Ir a la línea 100 del código, se puede cambiar el número deéndiendo la linea de código a la que queramos ir
+12) ==o== Abre un renglón abajo
+13) ==O== Abre un renglón arriba
+14) ==dd== Borrar la línea donde estoy
+15) ==/palabra== Busca una palabra
+16) ==n== Prózima aparición de la palabra
+
+
+
+
+
+
