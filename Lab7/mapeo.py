@@ -20,7 +20,7 @@ def mapeo(func,lista_numeros):
         resultado.append(func(i))
     return resultado
 
-cuadrados = mapeo(alcuadrado[2.5,2,3.8,1.2,6.6,lj,7,8])
+cuadrados = mapeo(alcuadrado,[2.5,2,3.8,1.2,6.6,lj,7,8])
 cubos = mapeo(alcubo,[1,2,3,4,5,6,7,8])
 print(cuadrados)
 print(cubos)
@@ -65,6 +65,10 @@ print(división(3))
 #=========================
 # Uso de la función map con una lista
 #=========================
+
+#=============================
+# Lista de ciudades y su temperatura
+#=============================
 temps = [("Berlín", 29), ("Cairo", 36), ("Buenos Aires", 19), ("Los Angeles", 26), ("Tokyo", 27), ("Nueva York", 28), ("Londres", 22), ("Pekín", 32), ("México Tenochtitlan", 23)]
 
 C_a_F = lambda datos: (datos[0], (9/5)*datos[1] + 32)
