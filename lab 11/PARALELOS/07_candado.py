@@ -28,7 +28,7 @@ def sumale100(numero,candado):
         # Value es un objeto de número compartido 
         #====================================================================
 
-        numero_compartido = Value('1', 0)
+        numero_compartido = Value('i', 0)
         print("Al principio vale = ", numero_compartido.value)
 
         p1 = Process(target=sumale100, args = (numero_compartido,candado))
@@ -38,5 +38,5 @@ def sumale100(numero,candado):
         p2.start()
 
         p1.join()
-        pe.join()
+        p2.join()
         print("Al finale vale = ", numero_compartido.value)
