@@ -22,7 +22,7 @@ if __name__=="__main__":
 
     s = Mensaje(rank)
     src = rank-1 if rank!=0 else size-1
-    dst = rank-1 if rank!=size-1 else 0
+    dst = rank+1 if rank!=size-1 else 0
 
     #=========================
     #  Arreglo para enviar
@@ -44,7 +44,7 @@ if __name__=="__main__":
     req = comm.Irecv(a, source=src)
     req.Wait()
 
-    print("Soy el rpoceso ". rank ,", el resultante es ", a)
+    print("Soy el proceso ". rank ,", el resultante es ", a)
 
 
 
