@@ -12,7 +12,7 @@ from aplicacion.banco.cliente_bancario import ClienteBancario
 try:
     cliente = ClienteBancario("Jaime Andrade", "Hernandez Sánchez", 28, 0.0)
     cliente.guardarDinero(300)
-    print(cliente.imprimirInfo(300))
+    print(cliente.imprimirInfo())
     cliente.retirarDinero(400)
     print(cliente.imprimirInfo())
 #=============================
