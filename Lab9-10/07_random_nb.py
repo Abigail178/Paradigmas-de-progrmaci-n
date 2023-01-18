@@ -6,7 +6,7 @@ from mpi4py import MPI
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 
-randNUm = numpy.zeros(1)
+randNum = numpy.zeros(1)
 
 if rank == 1:
     dst = 0
@@ -16,7 +16,7 @@ if rank == 0 :
     src =1
 
 randNum = numpy.random.random_sample(1)
-print("Process", rank, "drew the number", random[0])
+print("Process", rank, "drew the number", randNum[0])
 comm.Isend(randNum, dest=dst)
 req = comm.Irecv(randNum, source=src)
 req.Wait()
