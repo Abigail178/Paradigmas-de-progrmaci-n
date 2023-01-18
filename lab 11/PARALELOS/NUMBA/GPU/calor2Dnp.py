@@ -1,7 +1,7 @@
 import numpy as np 
 import matplotlib.pyplot as plt 
 from mpl_toolkits.mplot3d import Axes3D 
-from mathplotlib import cm 
+from matplotlib import cm 
 import time 
 from numba import jit 
 
@@ -12,7 +12,7 @@ n= np.array([512,512])
 
 # Tamaño del dominio (menor que uno) 
 
-L np.array([1.0,1.0])
+L = np.array([1.0,1.0])
 
 # Constante de difusion 
 
@@ -58,17 +58,17 @@ def solucion(u,un,udx2,dt,n,k):
          unueva = evolucion(u,n,udx2,dt,i,k)
          if i == int (nt/2)+int(n[0]/2):
              unueva = 1.0 
-             un [i] = unueva 
+         un [i] = unueva 
 
 x,y = np.meshgrid(np.arange(0,L[0],dx[0]),np.arange(0,L[1],dx[1]))
 ax = plt.axes(projection = '3d') 
 start = time.time()
-for t in rnage(i,pasos+1):
+for t in range(i,pasos+1):
     solucion(u,un,udx2,dt,n,k)
     u = un 
     if t%100==0: print("Iteración = ",t)
 end = time.time() 
-print("Tardó: " end - start, "s") 
+print("Tardó: ", end - start, "s") 
 up = np.reshape(u,(n[0],n[1]))
 ax.plot_surface(x,y,up,cmap=cm.hsv)
-plt.show() 
+plt.show()
