@@ -18,7 +18,7 @@ class ClienteBancario:
     def getNombreCompleto(self) -> str:
         return self.nombres + " " + self.apellidos
 
-    def __mandarEmail(self, titulo:str, text:str) -> None:
+    def __mandarEmail(self, titulo:str, texto:str) -> None:
         print("mandar email: "+ titulo + "con texto: "+ texto)
 
     def __enviarBalanceAlBanco(self, cantidad:float) -> None:
@@ -49,7 +49,7 @@ class ClienteBancario:
         self.__enviarBalanceAlBanco(cantidad)
 
     def retirarDinero(self, cantidad:float) -> None:
-        cantidadFinal = self.__balanceDeCUenta - cantidad
+        cantidadFinal = self.__balanceDeCuenta - cantidad
         self.__validarCantidad(cantidadFinal)
         self.__balanceDeCuenta = cantidadFinal
         self.__mandarEmail("----retirando dinero----", " se retiró " + str(cantidad))
