@@ -62,7 +62,7 @@ start = time.time()
 for t in range (1, pasos+1):
     solucion(u,un,udx2,dt,n,k)
     u = un 
-    if t%100==0: print("Iteración = ". t)
+    if t%100==0: print("Iteración = ", t)
 end  = time.time()
 print ( " Tardó :", end-start, "s")
 
