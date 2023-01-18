@@ -42,9 +42,9 @@ print ("celdas =",nt)
 @ jit 
 
 def evolucion(u,n_0,n_1,udx2_0,udx2_1,dt,kd,i):
-    jpl = i + n_0
+    jp1 = i + n_0
     jm1 = i - n_0 
-    laplaciano = (u[i-1] - 2.0*u[i]+u[i+1])*udx2_0 + (i[jml] - 2.0*u[i] + u [jpl])*udx2_1 
+    laplaciano = (u[i-1] - 2.0*u[i]+u[i+1])*udx2_0 + (i[jm1] - 2.0*u[i] + u [jp1])*udx2_1 
 
     unueva= u[i] + dt*kd*laplaciano 
     return unueva 
@@ -55,7 +55,7 @@ evolucion_gpu = cuda.jit(device=True)(evolucion)
 def solucion_kernel(u_d,un_d,udx2:1,dt,n_0,n_1,kd):
     ii, jj = cuda.grid(2) 
     i = ii + n_0*jj
-    if ii == 0 or jj== 0 or ii==n_0-1 or jj==n_i-1: 
+    if ii == 0 or jj== 0 or ii==n_0-1 or jj==n_1-1: 
         unueva = 0.0 
 
     else:
@@ -64,7 +64,7 @@ def solucion_kernel(u_d,un_d,udx2:1,dt,n_0,n_1,kd):
         unueva = 1.0 
     un_d[i] = unueva 
 blockdim = (32,16)  # hijos bloque 
-griddim = (int(n[0] / blockdim[0]), int (n[1]/blockdim[1])) # bloques en el dominio
+griddim = (int(n[0] / blockdim[0]), int(n[1]/blockdim[1])) # bloques en el dominio
 
 #=============================================
 # Programa principal 
@@ -76,7 +76,7 @@ start = time.time()
 u = np.zeros (nt,dtype=np.float64) # arreglos de lectura 
 un = np.zeros (nt, dtype=np.float64) # arreglos de escritura 
 
-# Pasar arreglos al CPU 
+# Pasar arreglos al GPU 
 u_d = cuda.to_device(u)
 un_d = cuda.to_device(un)
 # integrar en el tiempo 
@@ -100,7 +100,7 @@ print("Tardó: ", end-start,"s")
 u = np.reshape(u,(n[0], n[1]))
 x,y = np.meshgrid(np.arange(0,L[0],dx[0]),np.arange(0,L[1],dx[1]))
 ax = plt.axes(projection='3d')
-ax_plot_surface(x,y,u,cmap=cm.hsv)
+ax.plot_surface(x,y,u,cmap=cm.hsv)
 plt.show()
 
        
