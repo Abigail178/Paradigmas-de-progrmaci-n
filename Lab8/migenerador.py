@@ -1,7 +1,7 @@
 def migenerador():
 	print("Primero")
 	yield 10
-	print("Segunda")
+	print("Segundo")
 	yield 20
 	print("Tercero")
 	yield 30
