@@ -1,4 +1,4 @@
-from multiprocessing import PRocess, Lock, Value 
+from multiprocessing import Process, Lock, Value 
 import random 
 import os 
 
@@ -6,7 +6,7 @@ def montecarlo(N:float,resultado:Value,lock:Lock) -> None:
     semilla:float = random.uniform(-1,1)
     random.seed(semilla)
     dentro:int = 0 
-    for i in range(M):
+    for i in range(N):
         x:float = random.uniform(-1,1) 
         y:float = random.uniform(-1,1)
 
@@ -22,17 +22,16 @@ if __name__== "__main__":
     cpus = os.cpu_count()
     N:int = int(n/cpus)
     print("Procesadores = ",cpus) 
-    resultado = Value8('1',0) 
+    resultado = Value('i',0) 
     procesos = [] 
     for i in range (cpus): 
         print("registrando el proceso %d" %i)
-        procesos.append(Process(target=montecarlo,args=(N,resultados,lock)))
-
-        for proceso in procesos: 
-            proceso.start() 
-        for proceso in procesos: 
-            proceso.join() 
+        procesos.append(Process(target=montecarlo,args=(N,resultado,lock)))
+    for proceso in procesos: 
+        proceso.start() 
+    for proceso in procesos: 
+        proceso.join() 
 
         print("Números de tiros = ", cpus*N)
-        print("Numeros de aciertos = ", resultado,value)
+        print("Numeros de aciertos = ", resultado.value)
         print("Aproximación de pi = " , 4*float(resultado.value)/(cpus*N))
