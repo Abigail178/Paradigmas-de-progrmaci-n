@@ -23,7 +23,7 @@ if __name__ == "__main__":
     candado = Lock() 
 
     # Número común a los procesos, d de dobles
-    numeros_compartidps = Array('d', [0.0, 100.0, 200.0])
+    numeros_compartidos = Array('d', [0.0, 100.0, 200.0])
 
     # : quiere decir todos los elementos 
 
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     p1 = Process(target=sumale100, args=(numeros_compartidos,candado))
     p2 = Process(target=sumale100, args=(numeros_compartidos,candado))
 
-    pi.start()
+    p1.start()
     p2.start()
 
     p1.join()
