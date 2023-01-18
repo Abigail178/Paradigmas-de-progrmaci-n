@@ -43,21 +43,20 @@ u = np.zeros(nt,dtype=np.float64) #ARREGLO DE LECTURA
 un = np.zeros(nt,dtype=np.float64) #ARREGLO DE ESCRITURA
 
 def evolucion(u,n,udx2,dt,i,k):
-
-    jpl = i + n[0]
-    jml = i - n[0]
-    laplaciano = ( u [i-1]-2.0*u[i]+u[i+1])*udx2[0] + ( u[jml] - 2.0*u[i]+u[jpl])*udx2[1]
-    unueva = u[i]+ dt*k*laplaciano 
-    return unueva 
+  jpl = i + n[0]
+  jml = i - n[0]
+  laplaciano = (u[i-1]-2.0*u[i]+u[i+1])*udx2[0] + (u[jml] - 2.0*u[i]+u[jpl])*udx2[1]
+  unueva = u[i]+ dt*k*laplaciano 
+  return unueva 
 
 def solucion( u,un,udx2,dt, n , k ):
-    for jj in range(1,n[1]-1):
-       for ii in range(1,n[0]-1):
-           i = ii + n[0]*jj
-           unueva = evolucion (u,n,udx2, dt, i,k)
-           if i == int(nt/2)+int(n[0]/2):
-               unueva = 1.0 
-           un [i] = unueva 
+  for jj in range(1,n[1]-1):
+    for ii in range(1,n[0]-1):
+      i = ii + n[0]*jj
+      unueva = evolucion (u,n,udx2, dt, i,k)
+      if i == int(nt/2)+int(n[0]/2):
+        unueva = 1.0 
+      un [i] = unueva 
 
 start = time.time()
 for t in range (1, pasos+1):
