@@ -1,13 +1,13 @@
 import numpy as np 
 import matplotlib.pyplot as plt 
-from mpl_toolkits.mplot3d import Axes 3D 
+from mpl_toolkits.mplot3d import Axes3D 
 from matplotlib import cm 
 import time 
 
 #==================================================
 # Números de celdas 
 
-n = np.array[512,512])
+n = np.array([512,512])
 
 # Tamaño del dominio (menor que uno) 
 
@@ -35,12 +35,12 @@ print("dt =", dt)
 # Total de celdas 
 
 nt = n[0]*n[1]
-print ("celdas = " nt)
+print ("celdas = ", nt)
 
 # LLenar la solución con ceros 
 
-u = np.zeros(nt,dtype=np, float64)
-un = np.zeros(nt,dtype=np, float64)
+u = np.zeros(nt,dtype=np.float64) #ARREGLO DE LECTURA
+un = np.zeros(nt,dtype=np.float64) #ARREGLO DE ESCRITURA
 
 def evolucion(u,n,udx2,dt,i,k):
 
@@ -57,18 +57,18 @@ def solucion( u,un,udx2,dt, n , k ):
            unueva = evolucion (u,n,udx2, dt, i,k)
            if i == int(nt/2)+int(n[0]/2):
                unueva = 1.0 
-               un [i] = unueva 
+           un [i] = unueva 
 
 start = time.time()
-for t in range (1, pasos+1)
-    solucion(u,un,udx2,dt,n,k):
-        u = un 
-        if t%100=0: print("Iteración = ". t)
+for t in range (1, pasos+1):
+    solucion(u,un,udx2,dt,n,k)
+    u = un 
+    if t%100==0: print("Iteración = ". t)
 end  = time.time()
 print ( " Tardó :", end-start, "s")
 
-u= np_reshape(u,(n[0],n[1]))
-x,y = np.meshgrid(np.arange(0, L[0],dx[0];)),np.arange(0,L[1],dx[1]))
+u= np.reshape(u,(n[0],n[1]))
+x,y = np.meshgrid(np.arange(0, L[0],dx[0]),np.arange(0,L[1],dx[1]))
 ax = plt.axes(projection='3d')
-ax_plot_surface(x,y,u,cmap=cm_hsv)
+ax.plot_surface(x,y,u,cmap=cm.hsv)
 plt.show()
