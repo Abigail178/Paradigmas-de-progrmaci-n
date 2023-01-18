@@ -1,5 +1,5 @@
 
-from multiprocesing import Process
+from multiprocessing import Process
 import random 
 import os 
 
