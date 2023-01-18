@@ -1,6 +1,6 @@
 # Ejemplo de comunicación bloqueada a una misma variable compartida 
 
-from multiprocessing import Process,Value; Lock 
+from multiprocessing import Process,Value. Lock 
 import time 
 
 def suamle100(numero,candado):
@@ -11,13 +11,13 @@ def suamle100(numero,candado):
         with candado:
             # Hacer la operación 
             numero.value += 1
-if _-name__ "__main__":
+if __name__ == "__main__":
 
     #Candado para evitar que dos procesos se empalmen 
     candado = Lock()
 
     #Número común a los procesos, 1 de entero, comienza siendo 0 
-    numero-compartido 0 Value('1', 0) 
+    numero_compartido = Value('1', 0) 
 
     print("Al principio vale =", numero_compartido.value)
 
